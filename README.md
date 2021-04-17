@@ -32,16 +32,18 @@ As a dev
 To build more welcoming experience  
 I want to display welcome form, asking a user to input his/her name
 
-# Final Goal:
+## Final Goal
+
 - function file: has all necessary logic: winner determination and score keeping
 - instaed of words, app uses icons for Rock, Paper and Scissors jests
 - main window has two screens that show player and PC jest, with backgrownd color that Green - winner, Red - looser
 - on the left there is a table with history of the game and total score
 
-## Priorities:
+## Priorities
+
 1) Logic (no logic - no game)
 2) Primitive text-based UI just to play the game (no score keeping)
 3) User can login with his/her name of choice
-3) Better UI - Using icons and colors
-4) Total score - User vs. PC
-5) History of steps
+4) Better UI - Using icons and colors
+5) Total score - User vs. PC
+6) History of steps
