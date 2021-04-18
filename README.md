@@ -41,8 +41,11 @@ I want to display welcome form, asking a user to input his/her name
 
 ## Priorities
 
-1) Logic (no logic - no game)
-2) Primitive text-based UI just to play the game (no score keeping)
+1) Logic (no logic - no game)  
+1.1) determineWinner function
+2) Primitive text-based UI just to play the game (no score keeping)  
+2.1) 3 buttons for Rock, Paper and Scissors  
+2.2) below shows throws and win/loss status for  both players  
 3) User can login with his/her name of choice
 4) Better UI - Using icons and colors
 5) Total score - User vs. PC
