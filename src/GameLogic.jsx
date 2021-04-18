@@ -1,19 +1,19 @@
 // -- This file contains all functions of game's logic --
 
-const determineWinner = (throws) => {
+const determineWinner = (hands) => {
   /* 
   Function to determine who wins in the game of Rock Paper Scissors
-  using algebra. Rock, Paper and Scissors are coded as numbers: 
+  using arithmetics. Rock, Paper and Scissors are coded as numbers: 
       Rock = 0
       Paper = 1
       Scissors = 2
-  In that case, Player wins if his hand differs by +1, with the 
-  exception of Rock vs Scissors where is it -2.
-  Difference of 0 means tie.     
+  Player wins if his/her hand differs from other's by +1, with the 
+  exception of Rock vs Scissors combination where is it -2.
+  Difference of 0 between both player hands means tie.     
 */
 
   // throws = {playerOne: number, playerTwo: number}
-  let difference = throws.playerTwo - throws.playerOne;
+  let difference = hands.playerTwo - hands.playerOne;
   if (difference === 0) {
     // both throw the same thing
     return { playerOneWin: false, playerTwoWin: false };
