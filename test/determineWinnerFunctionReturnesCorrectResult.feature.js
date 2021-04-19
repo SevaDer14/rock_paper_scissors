@@ -1,89 +1,115 @@
-const expect = require('chai').expect;
+const expect = require("chai").expect;
 const gameLogic = require("../src/GameLogic.jsx");
 const rock = 0,
   paper = 1,
   scissors = 2;
-let result = {};
 
-describe("determineWinner function always returnes correct winner", () => {
-  it('is expected that nobody wins if Player-1 throws "rock" and Player-2 throws "rock"', () => {
-    result = gameLogic.determineWinner({ 
-      playerOne: rock, 
-      playerTwo: rock 
+describe("determineWinner function always returnes correct winner", function() {
+  it('is expected that nobody wins if Player-1 throws "rock" and Player-2 throws "rock"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: rock,
+        playerTwo: rock,
+      })
+    ).to.eql({
+      playerOneWin: false,
+      playerTwoWin: false,
     });
-    expect(result.playerOneWin).to.eq(false);
-    expect(result.playerTwoWin).to.eq(false);
   });
 
-  it('is expected that Player-2 wins if Player-1 throws "rock" and Player-2 throws "paper"', () => {
-    result = gameLogic.determineWinner({ 
-      playerOne: rock, 
-      playerTwo: paper 
+  it('is expected that Player-2 wins if Player-1 throws "rock" and Player-2 throws "paper"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: rock,
+        playerTwo: paper,
+      })
+    ).to.eql({
+      playerOneWin: false,
+      playerTwoWin: true,
     });
-    expect(result.playerOneWin).to.eq(false);
-    expect(result.playerTwoWin).to.eq(true);
   });
 
-  it('is expected that Player-1 wins if Player-1 throws "rock" and Player-2 throws "scissors"', () => {
-    result = gameLogic.determineWinner({
-      playerOne: rock,
-      playerTwo: scissors,
+  it('is expected that Player-1 wins if Player-1 throws "rock" and Player-2 throws "scissors"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: rock,
+        playerTwo: scissors,
+      })
+    ).to.eql({
+      playerOneWin: true,
+      playerTwoWin: false,
     });
-    expect(result.playerOneWin).to.eq(true);
-    expect(result.playerTwoWin).to.eq(false);
   });
 
-  it('is expected that Player-1 wins if Player-1 throws "paper" and Player-2 throws "rock"', () => {
-    result = gameLogic.determineWinner({ 
-      playerOne: paper, 
-      playerTwo: rock 
+  it('is expected that Player-1 wins if Player-1 throws "paper" and Player-2 throws "rock"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: paper,
+        playerTwo: rock,
+      })
+    ).to.eql({
+      playerOneWin: true,
+      playerTwoWin: false,
     });
-    expect(result.playerOneWin).to.eq(true);
-    expect(result.playerTwoWin).to.eq(false);
   });
 
-  it('is expected that nobody wins if Player-1 throws "paper" and Player-2 throws "paper"', () => {
-    result = gameLogic.determineWinner({ 
-      playerOne: paper, 
-      playerTwo: paper 
+  it('is expected that nobody wins if Player-1 throws "paper" and Player-2 throws "paper"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: paper,
+        playerTwo: paper,
+      })
+    ).to.eql({
+      playerOneWin: false,
+      playerTwoWin: false,
     });
-    expect(result.playerOneWin).to.eq(false);
-    expect(result.playerTwoWin).to.eq(false);
   });
 
-  it('is expected that Player-2 wins if Player-1 throws "paper" and Player-2 throws "scissors"', () => {
-    result = gameLogic.determineWinner({
-      playerOne: paper,
-      playerTwo: scissors,
+  it('is expected that Player-2 wins if Player-1 throws "paper" and Player-2 throws "scissors"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: paper,
+        playerTwo: scissors,
+      })
+    ).to.eql({
+      playerOneWin: false,
+      playerTwoWin: true,
     });
-    expect(result.playerOneWin).to.eq(false);
-    expect(result.playerTwoWin).to.eq(true);
   });
 
-  it('is expected that Player-2 wins if Player-1 throws "scissors" and Player-2 throws "rock"', () => {
-    result = gameLogic.determineWinner({
-      playerOne: scissors,
-      playerTwo: rock,
+  it('is expected that Player-2 wins if Player-1 throws "scissors" and Player-2 throws "rock"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: scissors,
+        playerTwo: rock,
+      })
+    ).to.eql({
+      playerOneWin: false,
+      playerTwoWin: true,
     });
-    expect(result.playerOneWin).to.eq(false);
-    expect(result.playerTwoWin).to.eq(true);
   });
 
-  it('is expected that Player-1 wins if Player-1 throws "scissors" and Player-2 throws "paper"', () => {
-    result = gameLogic.determineWinner({
-      playerOne: scissors,
-      playerTwo: paper,
+  it('is expected that Player-1 wins if Player-1 throws "scissors" and Player-2 throws "paper"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: scissors,
+        playerTwo: paper,
+      })
+    ).to.eql({
+      playerOneWin: true,
+      playerTwoWin: false,
     });
-    expect(result.playerOneWin).to.eq(true);
-    expect(result.playerTwoWin).to.eq(false);
   });
 
-  it('is expected that nobody wins if Player-1 throws "scissors" and Player-2 throws "scissors"', () => {
-    result = gameLogic.determineWinner({
-      playerOne: scissors,
-      playerTwo: scissors,
+  it('is expected that nobody wins if Player-1 throws "scissors" and Player-2 throws "scissors"', function() {
+    expect(
+      gameLogic.determineWinner({
+        playerOne: scissors,
+        playerTwo: scissors,
+      })
+    ).to.eql({
+      playerOneWin: false,
+      playerTwoWin: false,
     });
-    expect(result.playerOneWin).to.eq(false);
-    expect(result.playerTwoWin).to.eq(false);
   });
 });
