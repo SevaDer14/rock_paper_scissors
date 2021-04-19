@@ -18,7 +18,8 @@
     "eject": "react-scripts eject",
     "start:silent": "BROWSER=none react-scripts start",
     "cy:open": "cypress open",
-    "cypress": "start-server-and-test start:silent http://localhost:3000/ cy:open"
+    "cypress": "start-server-and-test start:silent http://localhost:3000/ cy:open",
+    "unit:test": "mocha"
   },
   "eslintConfig": {
     "extends": [
@@ -39,7 +40,9 @@
     ]
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "cypress": "^7.1.0",
+    "mocha": "^8.3.2",
     "start-server-and-test": "^1.12.1"
   }
 }
