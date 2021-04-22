@@ -1,8 +1,8 @@
 
 import React, { Component, useState } from 'react'
-import { Container, Segment, Header, Button, Grid } from 'semantic-ui-react'
+import { Container, Segment, Header, Image, Grid } from 'semantic-ui-react'
 import GameContainer from './GameContainer'
-const gameLogic = require('../src/GameLogic.jsx')
+//import background from '../public/img/RPS_background.jpg'
 
 
 
@@ -12,13 +12,17 @@ class App extends Component {
 
   render () {
     return (
-      <Container text textAlign='center'>
+      <Container fluid>
+        <Image src='/img/RPS_background.jpg' fluid centered/>
+        <Container text textAlign='center'>
 
-        <Segment inverted>
-          <Header data-cy='app-header'>Rock Paper Scissors</Header>
-        </Segment>
+          <Segment inverted>
+            <Header data-cy='app-header'>Rock Paper Scissors</Header>
+          </Segment>
 
-        <GameContainer/>
+          <GameContainer/>
+
+        </Container>
         
       </Container>
     )
