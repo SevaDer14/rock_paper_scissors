@@ -1,3 +1,7 @@
+const convertHandToNumber = (handOne, handTwo) => {
+  
+}
+
 const determineWinner = (hands) => {
   // hands = {playerOne: number, playerTwo: number}
 
