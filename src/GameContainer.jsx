@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Segment, Header, Button, Grid } from "semantic-ui-react";
+import { Segment, Header, Button, Grid, Divider } from "semantic-ui-react";
 import gameLogic from "../src/GameLogic.jsx";
+import _ from 'underscore'
 
 const GameContainer = () => {
   const [playerOneHand, setplayerOneHand] = useState("Your hand of choice");
@@ -9,16 +10,18 @@ const GameContainer = () => {
 
   const randomHand = () => {
     const possibleHands = ["Rock", "Paper", "Scissors"];
-    return possibleHands[Math.floor(Math.random() * 3)]
-  }
+    return possibleHands[_.random(0,2)]
+  }  
 
-  
-
-  const gameOn = (playerOneHand) => {    
-    const hands = {playerOne: playerOneHand, playerTwo: randomHand()}
-    setplayerOneHand(hands.playerOne);
-    setplayerTwoHand(hands.playerTwo);
-    setWinner(gameLogic.determineWinner(hands))
+  const gameOn = (playerOneHand) => {       
+    setplayerOneHand(playerOneHand);
+    const computerHand = randomHand()
+    setplayerTwoHand(computerHand);
+    setWinner(gameLogic.determineWinner({
+        playerOne: playerOneHand, 
+        playerTwo: computerHand
+      })
+    )
   };
 
   return (
@@ -41,21 +44,21 @@ const GameContainer = () => {
           Scissors
         </Button>
       </Segment>
-
+      <Segment basic style={{fontSize: '24px'}}>{`${winner} Wins!`}</Segment>
       <Segment>
         <Grid columns="2">
           <Grid.Column>
+            <Header>Player:</Header>
             <Segment data-cy="player1-hand-display">{playerOneHand}</Segment>
-          </Grid.Column>
-          <Grid.Column>
+          </Grid.Column>          
+          <Grid.Column>         
+          <Header>Computer:</Header>
             <Segment data-cy="player2-hand-display">{playerTwoHand}</Segment>
-          </Grid.Column>
-        </Grid>
+          </Grid.Column>          
+        </Grid>        
       </Segment>
 
-      <Segment>
-        {`${winner} Wins!`}
-      </Segment>
+      
     </>
   );
 };
