@@ -12,6 +12,8 @@ const GameContainer = () => {
     return possibleHands[Math.floor(Math.random() * 3)]
   }
 
+  
+
   const gameOn = (playerOneHand) => {    
     const hands = {playerOne: playerOneHand, playerTwo: randomHand()}
     setplayerOneHand(hands.playerOne);

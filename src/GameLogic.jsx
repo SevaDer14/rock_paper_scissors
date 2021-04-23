@@ -1,8 +1,8 @@
 const getHandNumbers = (hands) => {
-  const handToNumberCorrespondance = { Rock: 0, Paper: 1, Scissors: 2 };
-  const playerOneHandNumber = handToNumberCorrespondance[hands.playerOne.to_sym];
-  const playerTwoHandNumber = handToNumberCorrespondance[hands.playerTwo.to_sym];
-  return playerOneHandNumber, playerTwoHandNumber;
+  //const handToNumberCorrespondance = ;
+  const playerOneHandNumber = ['Rock', 'Paper', 'Scissors'].indexOf(hands.playerOne);
+  const playerTwoHandNumber = ['Rock', 'Paper', 'Scissors'].indexOf(hands.playerTwo);  
+  return [playerOneHandNumber, playerTwoHandNumber]
 };
 
 const determineWinner = (hands) => {
@@ -17,10 +17,10 @@ const determineWinner = (hands) => {
   exception of Rock vs Scissors combination where is it -2.
   Difference of 0 between both player hands means tie. */
 
-  let playerOneHandNumber, playerTwoHandNumber = getHandNumbers(hands);
-
+  let [playerOneHandNumber, playerTwoHandNumber] = getHandNumbers(hands);
+  
   let difference = playerOneHandNumber - playerTwoHandNumber;
-
+  
   if (difference === 0) {
     return 'No one';
   } else if (difference === 1 || difference === -2) {
@@ -31,9 +31,3 @@ const determineWinner = (hands) => {
 
 module.exports = { determineWinner };
 
-/*if (difference === 0) {
-    return { playerOneWin: false, playerTwoWin: false };
-  } else if (difference === 1 || difference === -2) {
-    return { playerOneWin: true, playerTwoWin: false };
-  }
-  return { playerOneWin: false, playerTwoWin: true };*/
