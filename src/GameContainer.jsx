@@ -13,10 +13,10 @@ const GameContainer = () => {
   }
 
   const gameOn = (playerOneHand) => {    
-    const computerHand = randomHand
-    setplayerOneHand(playerOneHand);
-    setplayerTwoHand(computerHand);
-    setWinner(gameLogic.determineWinner(playerOneHand, computerHand))
+    const hands = {playerOne: playerOneHand, playerTwo: randomHand()}
+    setplayerOneHand(hands.playerOne);
+    setplayerTwoHand(hands.playerTwo);
+    setWinner(gameLogic.determineWinner(hands))
   };
 
   return (
