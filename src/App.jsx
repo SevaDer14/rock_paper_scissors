@@ -6,14 +6,15 @@ import GameContainer from "./GameContainer";
 class App extends Component {
   render() {
     return (
-      <Container fluid style={{ backgroundImage: "/img/RPS_background.jpg" }}>
+      
+      <div class="box">
         <Container text textAlign="center">
-          <Segment inverted>
+          <Segment inverted style={{marginTop: '150px'}}>
             <Header data-cy="app-header">Rock Paper Scissors</Header>
           </Segment>
           <GameContainer />
         </Container>
-      </Container>
+      </div>
     );
   }
 }
