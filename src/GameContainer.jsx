@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Segment, Header, Button, Grid} from "semantic-ui-react";
 import gameLogic from "../src/GameLogic.jsx";
-import _ from "underscore";
+
 
 const GameContainer = () => {
   const [playerOneHand, setplayerOneHand] = useState("Your hand of choice");
@@ -10,14 +10,11 @@ const GameContainer = () => {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
 
-  const randomHand = () => {
-    const possibleHands = ["Rock", "Paper", "Scissors"];
-    return possibleHands[_.random(0, 2)];
-  };
+  
 
   const gameOn = (playerOneHand) => {
     setplayerOneHand(playerOneHand);
-    const computerHand = randomHand();
+    const computerHand = gameLogic.randomHand();
     setplayerTwoHand(computerHand);
     setResult(
       gameLogic.determineWinner({

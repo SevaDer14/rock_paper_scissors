@@ -1,6 +1,13 @@
+const _ = require("underscore");
+
 const handToNumber = (hand) => {
   return ['Rock', 'Paper', 'Scissors'].indexOf(hand);
 }
+
+const randomHand = () => {
+  const possibleHands = ["Rock", "Paper", "Scissors"];
+  return possibleHands[_.random(0, 2)];
+};
 
 const determineWinner = (hands) => {  
   let difference = handToNumber(hands.playerOne) - handToNumber(hands.playerTwo);
@@ -13,5 +20,5 @@ const determineWinner = (hands) => {
   return 'Computer Wins!';
 };
 
-module.exports = { determineWinner };
-
+exports.determineWinner = determineWinner
+exports.randomHand = randomHand

@@ -1,4 +1,4 @@
-const gameContainer = require("../../src/GameContainer");
+const GameLogic = require("../../src/GameLogic");
 
 describe("user can play a game using buttons", () => {
   
@@ -25,7 +25,7 @@ describe("user can play a game using buttons", () => {
     
     describe('compures picks Rock', () => {
       beforeEach(() => {
-        cy.stub(gameContainer, 'randomHand').with(0)
+        cy.stub(gameLogic, 'randomHand').with(0)
       })
 
       it("is expected to retern a correct winner", () => {
@@ -46,7 +46,7 @@ describe("user can play a game using buttons", () => {
     
     describe('compures picks Paper', () => {
       beforeEach(() => {
-        cy.stub(gameContainer, 'randomHand').with(1)
+        cy.stub(gameLogic, 'randomHand').with(1)
       })
 
       it("is expected to retern a correct winner", () => {
@@ -67,7 +67,7 @@ describe("user can play a game using buttons", () => {
 
     describe('compures picks Scissors', () => {
       beforeEach(() => {
-        cy.stub(gameContainer, 'randomHand').with(2)
+        cy.stub(gameLogic, 'randomHand').with(2)
       })
 
       it("is expected to retern a correct winner", () => {
