@@ -6,11 +6,11 @@ const determineWinner = (hands) => {
   let difference = handToNumber(hands.playerOne) - handToNumber(hands.playerTwo);
   
   if (difference === 0) {
-    return 'No one';
+    return 'Tie';
   } else if (difference === 1 || difference === -2) {
-    return 'Player';
+    return 'Player Wins!';
   }
-  return 'Computer';
+  return 'Computer Wins!';
 };
 
 module.exports = { determineWinner };
