@@ -1,90 +1,60 @@
-const GameLogic = require("../../src/GameLogic");
 
-describe("user can play a game using buttons", () => {
+describe("user can play a game using buttons", () => {  
   
-  before(() => {
-    cy.visit("/");
-  });
-
-  it("is expected to show rock if user press rock button", () => {
-    cy.get("[data-cy=rock-button]").click();
-    cy.get("[data-cy=player1-hand-display]").should("contain.text", "Rock");
-  });
-
-  it("is expected to show paper if user press paper button", () => {
-    cy.get("[data-cy=paper-button]").click();
-    cy.get("[data-cy=player1-hand-display]").should("contain.text", "Paper");
-  });
-
-  it("is expected to show scissors if user press scissors button", () => {
-    cy.get("[data-cy=scissors-button]").click();
-    cy.get("[data-cy=player1-hand-display]").should("contain.text", "Scissors");
-  });
-
-  describe("when playing against PC winner is correctly determined", () => {
+  it("winner is correctly determined when computer picks Rock", () => {
+    cy.visit("/", {
+      onBeforeLoad(window) {        
+        cy.stub(window.Math, "random").callsFake(
+          () => { return 0 }
+        );
+      },
+    });    
     
-    describe('compures picks Rock', () => {
-      beforeEach(() => {
-        cy.stub(gameLogic, 'randomHand').with(0)
-      })
+    cy.get("[data-cy=rock-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Tie");
 
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=rock-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Tie");
-      })
+    cy.get("[data-cy=paper-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Player Wins!");
 
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=paper-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Player Wins!");
-      })
+    cy.get("[data-cy=scissors-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Computer Wins!");
+  })
 
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=scissors-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Computer Wins!");
-      })
-    })
+  it("winner is correctly determined when computer picks Paper", () => {
+    cy.visit("/", {
+      onBeforeLoad(window) {        
+        cy.stub(window.Math, "random").callsFake(
+          () => { return 0.5 }
+        );
+      },
+    });    
     
-    describe('compures picks Paper', () => {
-      beforeEach(() => {
-        cy.stub(gameLogic, 'randomHand').with(1)
-      })
+    cy.get("[data-cy=rock-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Computer Wins!");
 
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=rock-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Computer Wins!");
-      })
-    
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=paper-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Tie");
-      })
-    
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=scissors-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Player Wins!");
-      })
-    })
+    cy.get("[data-cy=paper-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Tie");
 
-    describe('compures picks Scissors', () => {
-      beforeEach(() => {
-        cy.stub(gameLogic, 'randomHand').with(2)
-      })
+    cy.get("[data-cy=scissors-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Player Wins!");
+  })
 
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=rock-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Player Wins!");
-      })
+  it("winner is correctly determined when computer picks Scissors", () => {
+    cy.visit("/", {
+      onBeforeLoad(window) {        
+        cy.stub(window.Math, "random").callsFake(
+          () => { return 1 }
+        );
+      },
+    });    
     
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=paper-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Computer Wins!");
-      })
-    
-      it("is expected to retern a correct winner", () => {
-        cy.get("[data-cy=scissors-button]").click();
-        cy.get("[data-cy=winner-display]").should("contain.text", "Tie");
-      })
-    })
-    
-  });
-});
+    cy.get("[data-cy=rock-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Player Wins!");
+
+    cy.get("[data-cy=paper-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Computer Wins!");
+
+    cy.get("[data-cy=scissors-button]").click();       
+    cy.get("[data-cy=winner-display]").should("contain.text", "Tie");
+  })
+})

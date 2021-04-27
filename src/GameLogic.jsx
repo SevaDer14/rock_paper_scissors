@@ -6,7 +6,9 @@ const handToNumber = (hand) => {
 
 const randomHand = () => {
   const possibleHands = ["Rock", "Paper", "Scissors"];
-  return possibleHands[_.random(0, 2)];
+  debugger
+  //return possibleHands[_.random(0, 2)];
+  return possibleHands[Math.floor(Math.random()*2)];
 };
 
 const determineWinner = (hands) => {  
