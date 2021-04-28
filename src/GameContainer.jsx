@@ -6,19 +6,21 @@ import gameLogic from "../src/GameLogic.jsx";
 const GameContainer = () => {
   const [playerHand, setPlayerHand] = useState("Your hand of choice");
   const [computerHand, setComputerHand] = useState("PC hand will be here");
-  const [resultMessage, setResult] = useState("Someone");
+  const [resultMessage, setResult] = useState("");
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
 
-  
+  const setScore = () => {
+    setResult(gameLogic.determineWinner(playerHand, computerHand));
+  }
 
   const startGame = (playerHand) => {
     setPlayerHand(playerHand);
     const computerHand = gameLogic.randomHand();
     setComputerHand(computerHand);
-    setResult(
-      gameLogic.determineWinner(playerHand, computerHand)        
-    );
+    setScore(gameLogic.determineWinner(playerHand, computerHand))
+    
+
   };
 
   return (
@@ -52,11 +54,11 @@ const GameContainer = () => {
       <Segment>
         <Grid columns="2">
           <Grid.Column>
-            <Header>Player: {playerScore}</Header>
+            <Header data-cy='player-score'>Player: {playerScore}</Header>
             <Segment data-cy="player1-hand-display">{playerHand}</Segment>
           </Grid.Column>
           <Grid.Column>
-            <Header>Computer: {computerScore}</Header>
+            <Header data-cy='computer-score'>Computer: {computerScore}</Header>
             <Segment data-cy="player2-hand-display">{computerHand}</Segment>
           </Grid.Column>
         </Grid>
