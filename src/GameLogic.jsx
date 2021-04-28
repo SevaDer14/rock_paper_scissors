@@ -13,11 +13,11 @@ const determineWinner = (playerHand, computerHand) => {
   let difference = handToNumber(playerHand) - handToNumber(computerHand);
   
   if (difference === 0) {
-    return 'Tie';
+    return {tie: true, player: false, computer: false};
   } else if (difference === 1 || difference === -2) {
-    return 'Player Wins!';
+    return {tie: false, player: true, computer: false};
   }
-  return 'Computer Wins!';
+  return {tie: false, player: false, computer: true};
 };
 
 exports.determineWinner = determineWinner

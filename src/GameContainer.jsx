@@ -10,17 +10,24 @@ const GameContainer = () => {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
 
-  const setScore = () => {
-    setResult(gameLogic.determineWinner(playerHand, computerHand));
+  const handleOutcome = (gameOutcome) => {
+    if (gameOutcome.tie) {
+      setResult('Tie');
+    } else if (gameOutcome.player) {
+      setResult('Player Wins!');
+      setPlayerScore(playerScore + 1)
+    } else if (gameOutcome.computer) {
+      setResult('Computer Wins!');
+      setComputerScore(computerScore + 1)
+    }
+    
   }
 
   const startGame = (playerHand) => {
     setPlayerHand(playerHand);
     const computerHand = gameLogic.randomHand();
     setComputerHand(computerHand);
-    setScore(gameLogic.determineWinner(playerHand, computerHand))
-    
-
+    handleOutcome(gameLogic.determineWinner(playerHand, computerHand));
   };
 
   return (
