@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Segment, Header, Button, Grid} from "semantic-ui-react";
+import { Segment, Header, Button, Grid } from "semantic-ui-react";
 import gameLogic from "../src/GameLogic.jsx";
-
 
 const GameContainer = () => {
   const [playerHand, setPlayerHand] = useState("Your hand");
@@ -9,26 +8,26 @@ const GameContainer = () => {
   const [resultMessage, setResult] = useState("");
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
-  const [playerHandColor, setPlayerHandColor] = useState('black');
-  const [computerHandColor, setComputerHandColor] = useState('black');
+  const [playerHandColor, setPlayerHandColor] = useState("black");
+  const [computerHandColor, setComputerHandColor] = useState("black");
 
   const handleOutcome = (gameOutcome) => {
     if (gameOutcome.tie) {
-      setResult('Tie');
-      setPlayerHandColor('black')
-      setComputerHandColor('black')
+      setResult("Tie");
+      setPlayerHandColor("black");
+      setComputerHandColor("black");
     } else if (gameOutcome.player) {
-      setResult('Player Wins!');
-      setPlayerScore(playerScore + 1)
-      setPlayerHandColor('green')
-      setComputerHandColor('red')
+      setResult("Player Wins!");
+      setPlayerScore(playerScore + 1);
+      setPlayerHandColor("green");
+      setComputerHandColor("red");
     } else if (gameOutcome.computer) {
-      setResult('Computer Wins!');
-      setComputerScore(computerScore + 1)
-      setComputerHandColor('green')
-      setPlayerHandColor('red')
-    }    
-  }
+      setResult("Computer Wins!");
+      setComputerScore(computerScore + 1);
+      setComputerHandColor("green");
+      setPlayerHandColor("red");
+    }
+  };
 
   const startGame = (playerHand) => {
     setPlayerHand(playerHand);
@@ -59,7 +58,7 @@ const GameContainer = () => {
         </Grid.Column>
         <Grid.Column>
           <Segment
-            data-cy='winner-display'
+            data-cy="winner-display"
             basic
             style={{ fontSize: "28px" }}
           >{`${resultMessage}`}</Segment>
@@ -68,18 +67,22 @@ const GameContainer = () => {
       <Segment>
         <Grid columns="2">
           <Grid.Column>
-            <Header data-cy='player-score'>Player: {playerScore}</Header>
-            <Segment 
-              data-cy="player-hand-display" 
-              style={{fontSize: '28px', color: playerHandColor}}
-              >{playerHand}</Segment>
+            <Header data-cy="player-score">Player: {playerScore}</Header>
+            <Segment
+              data-cy="player-hand-display"
+              style={{ fontSize: "28px", color: playerHandColor }}
+            >
+              {playerHand}
+            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Header data-cy='computer-score'>Computer: {computerScore}</Header>
-            <Segment 
-              data-cy="computer-hand-display" 
-              style={{fontSize: '28px', color: computerHandColor}}
-              >{computerHand}</Segment>
+            <Header data-cy="computer-score">Computer: {computerScore}</Header>
+            <Segment
+              data-cy="computer-hand-display"
+              style={{ fontSize: "28px", color: computerHandColor }}
+            >
+              {computerHand}
+            </Segment>
           </Grid.Column>
         </Grid>
       </Segment>
