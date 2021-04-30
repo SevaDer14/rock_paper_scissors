@@ -2,7 +2,7 @@ describe("user can play a game using buttons", () => {
   it("winner is correctly determined when computer picks Rock", () => {
     cy.visit("/", {
       onBeforeLoad(window) {
-        cy.stub(window.Math, "random").callsFake(() => {
+        cy.stub(window.Math, "floor").callsFake(() => {
           return 0;
         });
       },
@@ -21,8 +21,8 @@ describe("user can play a game using buttons", () => {
   it("winner is correctly determined when computer picks Paper", () => {
     cy.visit("/", {
       onBeforeLoad(window) {
-        cy.stub(window.Math, "random").callsFake(() => {
-          return 0.5;
+        cy.stub(window.Math, "floor").callsFake(() => {
+          return 1;
         });
       },
     });
@@ -40,8 +40,8 @@ describe("user can play a game using buttons", () => {
   it("winner is correctly determined when computer picks Scissors", () => {
     cy.visit("/", {
       onBeforeLoad(window) {
-        cy.stub(window.Math, "random").callsFake(() => {
-          return 1;
+        cy.stub(window.Math, "floor").callsFake(() => {
+          return 2;
         });
       },
     });
