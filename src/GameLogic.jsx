@@ -4,7 +4,7 @@ const handToNumber = (hand) => {
 
 const randomHand = () => {
   const possibleHands = ["Rock", "Paper", "Scissors"];
-  return possibleHands[Math.floor(Math.random() * 2)];
+  return possibleHands[Math.floor(Math.random() * 3)];
 };
 
 const determineWinner = (playerHand, computerHand) => {
